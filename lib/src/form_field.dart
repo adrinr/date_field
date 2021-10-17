@@ -30,6 +30,7 @@ class DateTimeFormField extends FormField<DateTime> {
     DatePickerEntryMode initialEntryMode = DatePickerEntryMode.calendar,
     DatePickerMode initialDatePickerMode = DatePickerMode.day,
     DateTimeFieldPickerMode mode = DateTimeFieldPickerMode.dateAndTime,
+    SelectableDayPredicate? selectableDayPredicate
   }) : super(
           key: key,
           initialValue: initialValue,
@@ -66,6 +67,7 @@ class DateTimeFormField extends FormField<DateTime> {
               mode: mode,
               initialEntryMode: initialEntryMode,
               dateTextStyle: dateTextStyle,
+              selectableDayPredicate: selectableDayPredicate,
             );
           },
         );

@@ -26,6 +26,7 @@ class DateTimeField extends StatelessWidget {
     DateTime? firstDate,
     DateTime? lastDate,
     DateFormat? dateFormat,
+    this.selectableDayPredicate,
   })  : dateFormat = dateFormat ?? getDateFormatFromDateFieldPickerMode(mode),
         firstDate = firstDate ?? _kDefaultFirstSelectableDate,
         lastDate = lastDate ?? _kDefaultLastSelectableDate,
@@ -47,6 +48,7 @@ class DateTimeField extends StatelessWidget {
         dateFormat = DateFormat.jm(),
         firstDate = firstDate ?? DateTime(2000),
         lastDate = lastDate ?? DateTime(2001),
+        selectableDayPredicate = null,
         super(key: key);
 
   /// Callback for whenever the user selects a [DateTime]
@@ -72,6 +74,9 @@ class DateTimeField extends StatelessWidget {
 
   /// How to display the [DateTime] for the user (default is [DateFormat.yMMMD])
   final DateFormat dateFormat;
+
+  /// Function to provide full control over which [DateTime] can be selected.
+  final SelectableDayPredicate? selectableDayPredicate;
 
   /// Whether the field is usable. If false the user won't be able to select any date
   final bool? enabled;
@@ -133,6 +138,7 @@ class DateTimeField extends StatelessWidget {
           initialEntryMode: initialEntryMode,
           firstDate: firstDate,
           lastDate: lastDate,
+          selectableDayPredicate: selectableDayPredicate,
         );
 
         if (_selectedDate != null) {
