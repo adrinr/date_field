@@ -28,7 +28,9 @@ class DateTimeField extends StatelessWidget {
     DateFormat? dateFormat,
     this.selectableDayPredicate,
     this.useMaterialWidgetForiOS = false,
-  })  : dateFormat = dateFormat ?? getDateFormatFromDateFieldPickerMode(mode),
+  })  : 
+        assert(selectableDayPredicate == null || useMaterialWidgetForiOS == true ),
+        dateFormat = dateFormat ?? getDateFormatFromDateFieldPickerMode(mode),
         firstDate = firstDate ?? _kDefaultFirstSelectableDate,
         lastDate = lastDate ?? _kDefaultLastSelectableDate,
         super(key: key);
@@ -44,7 +46,8 @@ class DateTimeField extends StatelessWidget {
     this.initialEntryMode = DatePickerEntryMode.calendar,
     DateTime? firstDate,
     DateTime? lastDate,
-  })  : initialDatePickerMode = null,
+  })  : 
+        initialDatePickerMode = null,
         mode = DateTimeFieldPickerMode.time,
         dateFormat = DateFormat.jm(),
         firstDate = firstDate ?? DateTime(2000),
