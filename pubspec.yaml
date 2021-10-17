@@ -1,7 +1,7 @@
 name: date_field
 description: A widget in the form of a field that lets people choose a date, a time or both.
-version: 2.1.2
 homepage: 'https://github.com/GaspardMerten/date_field'
+version: 2.1.3
 
 environment:
   sdk: '>=2.12.0 <3.0.0'
