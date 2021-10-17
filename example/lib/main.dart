@@ -111,6 +111,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
                     return val.day.isOdd;
                   },
+                  useMaterialWidgetForiOS: true,
                 ),
                 const SizedBox(height: 50),
                 DateTimeFormField(

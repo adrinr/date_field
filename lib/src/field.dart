@@ -27,6 +27,7 @@ class DateTimeField extends StatelessWidget {
     DateTime? lastDate,
     DateFormat? dateFormat,
     this.selectableDayPredicate,
+    this.useMaterialWidgetForiOS = false,
   })  : dateFormat = dateFormat ?? getDateFormatFromDateFieldPickerMode(mode),
         firstDate = firstDate ?? _kDefaultFirstSelectableDate,
         lastDate = lastDate ?? _kDefaultLastSelectableDate,
@@ -49,6 +50,7 @@ class DateTimeField extends StatelessWidget {
         firstDate = firstDate ?? DateTime(2000),
         lastDate = lastDate ?? DateTime(2001),
         selectableDayPredicate = null,
+        useMaterialWidgetForiOS = false,
         super(key: key);
 
   /// Callback for whenever the user selects a [DateTime]
@@ -78,6 +80,9 @@ class DateTimeField extends StatelessWidget {
   /// Function to provide full control over which [DateTime] can be selected.
   final SelectableDayPredicate? selectableDayPredicate;
 
+  /// Force to use always the material calendar, even in iOS
+  final bool useMaterialWidgetForiOS;
+
   /// Whether the field is usable. If false the user won't be able to select any date
   final bool? enabled;
 
@@ -105,7 +110,7 @@ class DateTimeField extends StatelessWidget {
       }
     }
 
-    if (Theme.of(context).platform == TargetPlatform.iOS) {
+    if (Theme.of(context).platform == TargetPlatform.iOS && !useMaterialWidgetForiOS) {
       showModalBottomSheet<void>(
         context: context,
         builder: (BuildContext builder) {
